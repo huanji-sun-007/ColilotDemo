@@ -1,0 +1,33 @@
+//string extension method to change a string to snakecase
+public static class StringExtensions
+{
+    public static string ToSnakeCase(this string input)
+    {
+        if (input == null)
+        {
+            return "";
+        }
+
+        if (input.Length == 0)
+        {
+            return "";
+        }
+
+        string output = input[0].ToString().ToLower();
+
+        for (int i = 1; i < input.Length; i++)
+        {
+            if (char.IsUpper(input[i]))
+            {
+                output += "_";
+                output += input[i].ToString().ToLower();
+            }
+            else
+            {
+                output += input[i];
+            }
+        }
+
+        return output;
+    }
+}
